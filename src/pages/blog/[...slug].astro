@@ -1,20 +1,64 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
-const { Content } = await render(post);
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, pubDate, tags } = entry.data;
+const date = new Date(pubDate);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<BaseLayout title={`${title} - blog`} description={description}>
+  <article class="blog-post">
+    <div class="container">
+      <div class="post-header">
+        <a href="/blog" class="back-link">← 返回博客列表</a>
+        <h1 class="post-title">{title}</h1>
+        <div class="post-meta">
+          <time datetime={date.toISOString()}>
+            {date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <div class="post-tags">
+            {Array.isArray(tags) && tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="post-content glass">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .blog-post { padding-top: 6rem; padding-bottom: 3rem; }
+  .post-header { margin-bottom: 2rem; }
+  .back-link { display: inline-block; color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem; }
+  .back-link:hover { color: var(--accent); }
+  .post-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3; }
+  .post-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.9rem; }
+  .post-tags { display: flex; gap: 0.5rem; }
+  .tag { padding: 0.2rem 0.6rem; background: var(--accent-glow); border-radius: 6px; font-size: 0.8rem; color: var(--accent); }
+  .post-content { padding: 2rem; line-height: 1.8; }
+  .post-content h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--accent); }
+  .post-content h3 { font-size: 1.2rem; margin: 1.5rem 0 0.8rem; }
+  .post-content p { margin-bottom: 1rem; color: var(--text-secondary); }
+  .post-content ul, .post-content ol { margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary); }
+  .post-content li { margin-bottom: 0.5rem; }
+  .post-content code { font-family: var(--font-mono); background: rgba(255, 255, 255, 0.06); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+  .post-content pre { margin: 1.5rem 0; padding: 1.2rem; background: rgba(0, 0, 0, 0.3); border-radius: 12px; overflow-x: auto; }
+  .post-content pre code { background: none; padding: 0; }
+  .post-content blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-secondary); font-style: italic; }
+  .post-content a { color: var(--accent2); }
+  @media (max-width: 640px) { .post-title { font-size: 1.6rem; } .post-content { padding: 1.2rem; } }
+</style>
