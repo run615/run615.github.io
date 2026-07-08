@@ -4,76 +4,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const projects = [
   {
     title: 'astro-website',
-    desc: '基于 Astro 构建的个人博客与作品集，支持 Markdown 内容管理和响应式设计。采用暗色主题和玻璃态设计风格。',
+    desc: '基于 Astro 构建的个人博客与作品集，支持 Markdown 内容管理和响应式设计。',
     lang: 'TypeScript',
-    stars: 12,
-    forks: 3,
     url: 'https://github.com/run615/run615.github.io',
   },
   {
     title: 'react-components',
-    desc: '一套现代化的 React 组件库，内置 30+ 高质量组件。支持 TypeScript、主题定制和无障碍访问标准。',
+    desc: '一套现代化的 React 组件库，内置 30+ 高质量组件。支持 TypeScript 和主题定制。',
     lang: 'TypeScript',
-    stars: 45,
-    forks: 8,
     url: 'https://github.com/run615/react-components',
   },
   {
     title: 'go-micro-service',
-    desc: '使用 Go 语言构建的微服务框架，集成 gRPC 通信、消息队列、分布式追踪和监控告警功能。',
+    desc: '使用 Go 语言构建的微服务框架，集成 gRPC 通信和分布式追踪。',
     lang: 'Go',
-    stars: 28,
-    forks: 6,
     url: 'https://github.com/run615/go-micro-service',
   },
   {
     title: 'vue-admin-dashboard',
-    desc: '基于 Vue 3 + TypeScript 的管理后台模板，内置权限管理、数据可视化、国际化等常用功能。',
+    desc: '基于 Vue 3 的管理后台模板，内置权限管理和数据可视化功能。',
     lang: 'Vue',
-    stars: 67,
-    forks: 15,
     url: 'https://github.com/run615/vue-admin-dashboard',
   },
   {
     title: 'python-data-tools',
-    desc: '数据分析和处理工具集，包含数据清洗、特征工程、可视化等常用模块，适用于数据科学工作流。',
+    desc: '数据分析和处理工具集，包含数据清洗、特征工程等功能模块。',
     lang: 'Python',
-    stars: 19,
-    forks: 4,
     url: 'https://github.com/run615/python-data-tools',
   },
   {
     title: 'docker-dev-env',
-    desc: '一站式开发环境配置，提供多种语言和框架的 Docker 镜像配置，支持一键启动开发环境。',
+    desc: '一站式开发环境配置，支持多种语言和框架的一键启动。',
     lang: 'Dockerfile',
-    stars: 34,
-    forks: 9,
     url: 'https://github.com/run615/docker-dev-env',
   },
 ];
 ---
 
-<BaseLayout title="项目 - run615" description="我的开源项目展示">
-  <section class="projects-page">
+<BaseLayout title="项目 - run615">
+  <section class="page">
     <div class="container">
-      <h1 class="page-title fade-in">项目</h1>
-      <p class="page-desc fade-in">我参与和创建的开源项目</p>
+      <h1 class="page-title">项目</h1>
+      <p class="page-subtitle">我参与和创建的开源项目</p>
 
-      <div class="projects-grid-full">
-        {projects.map((project, i) => (
-          <a href={project.url} target="_blank" rel="noopener noreferrer" class="project-card-full glass glow-on-hover fade-in" style={`animation-delay: ${i * 0.08}s`}>
-            <div class="project-card-top">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="project-icon"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-              <h2 class="project-card-title">{project.title}</h2>
-            </div>
-            <p class="project-card-desc">{project.desc}</p>
-            <div class="project-card-bottom">
-              <span class="project-lang">
-                <span class="lang-dot"></span>
-                {project.lang}
-              </span>
-              <span class="project-stats">⭐ {project.stars} ⑂ {project.forks}</span>
-            </div>
+      <div class="projects-grid">
+        {projects.map(p => (
+          <a href={p.url} target="_blank" rel="noopener noreferrer" class="card project-card">
+            <p class="project-lang">{p.lang}</p>
+            <h2 class="project-title">{p.title}</h2>
+            <p class="project-desc">{p.desc}</p>
           </a>
         ))}
       </div>
@@ -81,85 +60,40 @@ const projects = [
   </section>
 </BaseLayout>
 
-<style is:global>
-  .projects-page {
-    padding-top: 6rem;
-    padding-bottom: 3rem;
-  }
-
-  .page-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-  }
-
-  .page-desc {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-  }
-
-  .projects-grid-full {
+<style>
+  .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
-  .project-card-full {
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    color: var(--text-primary) !important;
-  }
-
-  .project-card-top {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .project-icon {
-    color: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .project-card-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-  }
-
-  .project-card-desc {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    flex: 1;
-    margin-bottom: 1.2rem;
-  }
-
-  .project-card-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+  .project-card {
+    color: var(--text) !important;
   }
 
   .project-lang {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
   }
 
-  .lang-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
+  .project-title {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
   }
 
-  @media (max-width: 640px) {
-    .page-title { font-size: 1.8rem; }
-    .projects-grid-full { grid-template-columns: 1fr; }
+  .project-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 734px) {
+    .projects-grid { grid-template-columns: 1fr; }
   }
 </style>

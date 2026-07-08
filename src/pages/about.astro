@@ -2,66 +2,50 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="关于 - run615" description="关于我和联系方式">
-  <section class="about-page">
+<BaseLayout title="关于 - run615">
+  <section class="page">
     <div class="container">
-      <h1 class="page-title fade-in">关于我</h1>
+      <h1 class="page-title">关于</h1>
 
-      <div class="about-content glass fade-in">
-        <div class="about-section">
-          <h2 class="about-heading">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            个人简介
-          </h2>
-          <p>
-            你好！我是 run615，一名热爱技术的全栈开发者。我热衷于构建优雅、高性能的数字产品，
-            并积极参与开源社区。我相信技术可以改变世界，而代码是表达创意的最好方式。
-          </p>
+      <div class="about-section">
+        <p class="about-text">
+          你好，我是 run615，一名全栈开发者。我热衷于构建优雅、高性能的数字产品，
+          并积极参与开源社区。
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2 class="section-title">技术栈</h2>
+        <div class="tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Vue</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">Go</span>
+          <span class="tag">Docker</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+          <span class="tag">GraphQL</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">AWS</span>
         </div>
+      </div>
 
-        <div class="about-section">
-          <h2 class="about-heading">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            技术栈
-          </h2>
-          <div class="tech-tags">
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Vue</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Go</span>
-            <span class="tech-tag">Docker</span>
-            <span class="tech-tag">PostgreSQL</span>
-            <span class="tech-tag">Redis</span>
-            <span class="tech-tag">GraphQL</span>
-            <span class="tech-tag">Kubernetes</span>
-            <span class="tech-tag">AWS</span>
-          </div>
-        </div>
-
-        <div class="about-section">
-          <h2 class="about-heading">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            联系我
-          </h2>
-          <p>如果你有任何问题、建议或者合作意向，欢迎通过以下方式联系我：</p>
-          <div class="contact-grid">
-            <a href="https://github.com/run615" target="_blank" rel="noopener noreferrer" class="contact-item glass glow-on-hover">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span class="contact-label">GitHub</span>
-              <span class="contact-value">@run615</span>
-            </a>
-            <a href="mailto:run615@example.com" class="contact-item glass glow-on-hover">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span class="contact-label">Email</span>
-              <span class="contact-value">run615@example.com</span>
-            </a>
-            <div class="contact-item glass">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span class="contact-label">位置</span>
-              <span class="contact-value">中国</span>
-            </div>
+      <div class="about-section">
+        <h2 class="section-title">联系方式</h2>
+        <div class="contact-grid">
+          <a href="https://github.com/run615" target="_blank" rel="noopener noreferrer" class="card contact-card">
+            <p class="contact-label">GitHub</p>
+            <p class="contact-value">@run615</p>
+          </a>
+          <a href="mailto:run615@example.com" class="card contact-card">
+            <p class="contact-label">Email</p>
+            <p class="contact-value">run615@example.com</p>
+          </a>
+          <div class="card contact-card">
+            <p class="contact-label">位置</p>
+            <p class="contact-value">中国</p>
           </div>
         </div>
       </div>
@@ -69,99 +53,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 </BaseLayout>
 
-<style is:global>
-  .about-page {
-    padding-top: 6rem;
-    padding-bottom: 3rem;
-  }
-
-  .page-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
-  }
-
-  .about-content {
-    padding: 2rem;
-  }
-
+<style>
   .about-section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 48px;
   }
 
-  .about-section:last-child {
-    margin-bottom: 0;
-  }
-
-  .about-heading {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--accent);
-  }
-
-  .about-section p {
-    color: var(--text-secondary);
+  .about-text {
+    font-size: 19px;
     line-height: 1.8;
-    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
   }
 
-  .tech-tags {
+  .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tech-tag {
-    padding: 0.35rem 0.8rem;
-    background: var(--accent-glow);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-  }
-
-  .tech-tag:hover {
-    background: rgba(108, 92, 231, 0.2);
-    transform: translateY(-1px);
+    gap: 8px;
   }
 
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 
-  .contact-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1.5rem;
+  .contact-card {
     text-align: center;
-    color: var(--text-primary) !important;
-  }
-
-  .contact-item svg {
-    color: var(--accent);
+    color: var(--text) !important;
   }
 
   .contact-label {
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
   }
 
   .contact-value {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 15px;
+    font-weight: 500;
   }
 
-  @media (max-width: 640px) {
-    .page-title { font-size: 1.8rem; }
+  @media (max-width: 734px) {
     .contact-grid { grid-template-columns: 1fr; }
+    .about-text { font-size: 17px; }
   }
 </style>

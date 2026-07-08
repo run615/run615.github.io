@@ -2,40 +2,33 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const blogEntries = await getCollection('blog');
-const sortedPosts = blogEntries.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
+const posts = await getCollection('blog');
+const sorted = posts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
 ---
 
-<BaseLayout title="博客 - run615" description="技术分享、项目经验与生活随想">
-  <section class="blog-page">
+<BaseLayout title="博客 - run615">
+  <section class="page">
     <div class="container">
-      <h1 class="page-title fade-in">博客</h1>
-      <p class="page-desc fade-in">技术分享 · 项目经验 · 生活随想</p>
+      <h1 class="page-title">博客</h1>
+      <p class="page-subtitle">技术分享 · 项目经验 · 生活随想</p>
+
+      {sorted.length === 0 && (
+        <p class="empty">还没有文章，敬请期待。</p>
+      )}
 
       <div class="blog-list">
-        {sortedPosts.length === 0 && (
-          <div class="empty-state glass">
-            <p>还没有文章，敬请期待！</p>
-          </div>
-        )}
-        {sortedPosts.map((post, i) => {
+        {sorted.map((post, i) => {
           const { title, description, pubDate, tags } = post.data;
-          const date = new Date(pubDate);
+          const d = new Date(pubDate);
           return (
-            <a href={`/blog/${post.id}`} class="blog-card glass glow-on-hover fade-in" style={`animation-delay: ${i * 0.1}s`}>
-              <div class="blog-card-content">
-                <h2 class="blog-card-title">{title}</h2>
-                <p class="blog-card-desc">{description}</p>
-                <div class="blog-card-meta">
-                  <time datetime={date.toISOString()}>
-                    {date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </time>
-                  <div class="blog-card-tags">
-                    {Array.isArray(tags) && tags.map(tag => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
+            <a href={`/blog/${post.id}`} class="blog-card card" style={`animation-delay: ${i * 0.05}s`}>
+              <time class="blog-date" datetime={d.toISOString()}>
+                {d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              <h2 class="blog-title">{title}</h2>
+              <p class="blog-desc">{description}</p>
+              <div class="blog-tags">
+                {Array.isArray(tags) && tags.map(t => <span class="tag">{t}</span>)}
               </div>
             </a>
           );
@@ -45,17 +38,47 @@ const sortedPosts = blogEntries.sort((a, b) => new Date(b.data.pubDate) - new Da
   </section>
 </BaseLayout>
 
-<style is:global>
-  .blog-page { padding-top: 6rem; padding-bottom: 3rem; }
-  .page-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-  .page-desc { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; }
-  .blog-list { display: flex; flex-direction: column; gap: 1rem; }
-  .blog-card { display: block; padding: 1.5rem; color: var(--text-primary) !important; transition: all 0.3s ease; }
-  .blog-card-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
-  .blog-card-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.6; }
-  .blog-card-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-secondary); }
-  .blog-card-tags { display: flex; gap: 0.4rem; }
-  .blog-card .tag { padding: 0.15rem 0.5rem; background: var(--accent-glow); border-radius: 6px; font-size: 0.75rem; color: var(--accent); }
-  .empty-state { text-align: center; padding: 3rem; color: var(--text-secondary); }
-  @media (max-width: 640px) { .page-title { font-size: 1.8rem; } }
+<style>
+  .blog-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .blog-card {
+    display: block;
+    color: var(--text) !important;
+  }
+
+  .blog-date {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .blog-title {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+
+  .blog-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .blog-tags {
+    display: flex;
+    gap: 6px;
+  }
+
+  .empty {
+    color: var(--text-secondary);
+    font-size: 15px;
+    text-align: center;
+    padding: 40px 0;
+  }
 </style>
