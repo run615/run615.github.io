@@ -1,0 +1,130 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('docs');
+  return entries.map(e => ({ params: { slug: e.id }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title } = entry.data;
+---
+
+<BaseLayout title={`${title} - 文档`}>
+  <article class="doc-page page">
+    <div class="container">
+      <a href="/docs" class="back">← 返回文档列表</a>
+      <h1 class="doc-title">{title}</h1>
+      <div class="doc-content">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .back {
+    display: inline-block;
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: 24px;
+    transition: color 0.2s;
+  }
+
+  .back:hover {
+    color: var(--text);
+  }
+
+  .doc-title {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+
+  .doc-content {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 720px;
+  }
+
+  .doc-content h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 36px 0 12px;
+  }
+
+  .doc-content h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 28px 0 10px;
+  }
+
+  .doc-content p {
+    margin-bottom: 14px;
+    color: var(--text-secondary);
+  }
+
+  .doc-content ul, .doc-content ol {
+    margin: 12px 0;
+    padding-left: 22px;
+    color: var(--text-secondary);
+  }
+
+  .doc-content li { margin-bottom: 4px; }
+
+  .doc-content code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .doc-content pre {
+    margin: 20px 0;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .doc-content pre code { background: none; padding: 0; }
+
+  .doc-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  .doc-content th, .doc-content td {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .doc-content th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+  }
+
+  .doc-content blockquote {
+    border-left: 3px solid var(--border);
+    padding-left: 14px;
+    margin: 20px 0;
+    color: var(--text-secondary);
+  }
+
+  .doc-content img { max-width: 100%; border-radius: var(--radius-sm); margin: 16px 0; }
+
+  @media (max-width: 734px) {
+    .doc-title { font-size: 26px; }
+    .doc-content { font-size: 14px; }
+  }
+</style>
