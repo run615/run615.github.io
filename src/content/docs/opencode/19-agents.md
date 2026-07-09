@@ -1,5 +1,5 @@
 ---
-title: 代理'
+title: '代理'
 description: '配置和使用专门的代理。'
 category: 'OpenCode 开发手册'
 order: 19

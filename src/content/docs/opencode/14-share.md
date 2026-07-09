@@ -1,5 +1,5 @@
 ---
-title: 分享'
+title: '分享'
 description: '分享您的 OpenCode 对话。'
 category: 'OpenCode 开发手册'
 order: 14

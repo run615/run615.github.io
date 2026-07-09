@@ -1,5 +1,5 @@
 ---
-title: Web'
+title: 'Web'
 description: '在浏览器中使用 OpenCode。'
 category: 'OpenCode 开发手册'
 order: 11

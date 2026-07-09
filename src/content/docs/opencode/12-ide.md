@@ -1,5 +1,5 @@
 ---
-title: IDE'
+title: 'IDE'
 description: '适用于 VS Code、Cursor 及其他 IDE 的 OpenCode 扩展'
 category: 'OpenCode 开发手册'
 order: 12

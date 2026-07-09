@@ -1,5 +1,5 @@
 ---
-title: GitHub'
+title: 'GitHub'
 description: '在 GitHub Issue 和 Pull Request 中使用 OpenCode。'
 category: 'OpenCode 开发手册'
 order: 15

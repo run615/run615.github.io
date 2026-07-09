@@ -1,5 +1,5 @@
 ---
-title: LSP 服务器'
+title: 'LSP 服务器'
 description: 'OpenCode 与你的 LSP 服务器集成。'
 category: 'OpenCode 开发手册'
 order: 27

@@ -1,5 +1,5 @@
 ---
-title: 规则'
+title: '规则'
 description: '为 opencode 设置自定义指令。'
 category: 'OpenCode 开发手册'
 order: 18

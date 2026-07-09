@@ -34,23 +34,26 @@ const sortedCategories = categories.sort(
     <aside class="docs-sidebar">
       <nav class="sidebar-nav">
         <a href="/docs" class="sidebar-back">← 所有文档</a>
-        {sortedCategories.map(cat => (
-          <div class="sidebar-group">
-            <h3 class="sidebar-group-title">{cat}</h3>
-            <ul class="sidebar-links">
-              {grouped[cat].map(doc => (
-                <li>
-                  <a
-                    href={`/docs/${doc.id}`}
-                    class:list={{ 'sidebar-link': true, active: doc.id === slug }}
-                  >
-                    {doc.data.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {sortedCategories.map(cat => {
+          const hasActive = grouped[cat].some(doc => doc.id === slug);
+          return (
+            <details class="sidebar-group" open={hasActive}>
+              <summary class="sidebar-group-title">{cat}</summary>
+              <ul class="sidebar-links">
+                {grouped[cat].map(doc => (
+                  <li>
+                    <a
+                      href={`/docs/${doc.id}`}
+                      class:list={{ 'sidebar-link': true, active: doc.id === slug }}
+                    >
+                      {doc.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          );
+        })}
       </nav>
     </aside>
 
@@ -199,17 +202,41 @@ const sortedCategories = categories.sort(
   }
 
   .sidebar-group {
-    margin-bottom: 20px;
+    margin-bottom: 4px;
   }
 
   .sidebar-group-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     font-size: 11px;
     font-weight: 600;
     color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    margin-bottom: 8px;
-    padding: 0 8px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+
+  .sidebar-group-title::-webkit-details-marker {
+    display: none;
+  }
+
+  .sidebar-group-title::before {
+    content: '▶';
+    font-size: 8px;
+    transition: transform 0.2s;
+  }
+
+  .sidebar-group[open] > .sidebar-group-title::before {
+    transform: rotate(90deg);
+  }
+
+  .sidebar-group-title:hover {
+    background: var(--bg-secondary);
   }
 
   .sidebar-links {
@@ -485,11 +512,20 @@ const sortedCategories = categories.sort(
       gap: 8px;
     }
 
-    .sidebar-group {
+    details.sidebar-group {
+      margin-bottom: 0;
+    }
+
+    details.sidebar-group[open] > summary.sidebar-group-title {
       margin-bottom: 8px;
     }
 
     .sidebar-group-title {
+      font-size: 10px;
+      padding: 4px 8px;
+    }
+
+    .sidebar-group-title::before {
       display: none;
     }
 

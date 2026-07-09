@@ -1,5 +1,5 @@
 ---
-title: 自定义工具'
+title: '自定义工具'
 description: '创建 LLM 可在 opencode 中调用的工具。'
 category: 'OpenCode 开发手册'
 order: 32

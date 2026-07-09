@@ -1,5 +1,5 @@
 ---
-title: 权限'
+title: '权限'
 description: '控制哪些操作需要审批才能运行。'
 category: 'OpenCode 开发手册'
 order: 25

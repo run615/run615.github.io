@@ -1,5 +1,5 @@
 ---
-title: Zen'
+title: 'Zen'
 description: '由 OpenCode 提供的精选模型列表。'
 category: 'OpenCode 开发手册'
 order: 13

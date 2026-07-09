@@ -1,5 +1,5 @@
 ---
-title: 快捷键'
+title: '快捷键'
 description: '自定义您的快捷键。'
 category: 'OpenCode 开发手册'
 order: 22

@@ -1,5 +1,5 @@
 ---
-title: 提供商'
+title: '提供商'
 description: '在 OpenCode 中使用任意 LLM 提供商。'
 category: 'OpenCode 开发手册'
 order: 3

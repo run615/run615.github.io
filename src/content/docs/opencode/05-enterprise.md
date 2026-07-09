@@ -1,5 +1,5 @@
 ---
-title: 企业版'
+title: '企业版'
 description: '在您的组织中安全地使用 OpenCode。'
 category: 'OpenCode 开发手册'
 order: 5

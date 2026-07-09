@@ -1,5 +1,5 @@
 ---
-title: TUI'
+title: 'TUI'
 description: '使用 OpenCode 终端用户界面。'
 category: 'OpenCode 开发手册'
 order: 9

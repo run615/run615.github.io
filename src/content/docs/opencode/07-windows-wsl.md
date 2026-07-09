@@ -1,5 +1,5 @@
 ---
-title: Windows'
+title: 'Windows'
 description: '通过 WSL 在 Windows 上运行 OpenCode 以获得最佳体验。'
 category: 'OpenCode 开发手册'
 order: 7

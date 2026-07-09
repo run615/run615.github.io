@@ -1,5 +1,5 @@
 ---
-title: CLI'
+title: 'CLI'
 description: 'OpenCode CLI 选项和命令。'
 category: 'OpenCode 开发手册'
 order: 10

@@ -1,5 +1,5 @@
 ---
-title: Policies'
+title: 'Policies'
 description: 'Control which configured resources OpenCode may use.'
 category: 'OpenCode 开发手册'
 order: 26

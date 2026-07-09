@@ -1,5 +1,5 @@
 ---
-title: 命令'
+title: '命令'
 description: '为重复任务创建自定义命令。'
 category: 'OpenCode 开发手册'
 order: 23

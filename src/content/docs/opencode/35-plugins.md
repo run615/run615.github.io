@@ -1,5 +1,5 @@
 ---
-title: 插件'
+title: '插件'
 description: '编写自己的插件来扩展 OpenCode。'
 category: 'OpenCode 开发手册'
 order: 35

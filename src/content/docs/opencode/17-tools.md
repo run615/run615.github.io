@@ -1,5 +1,5 @@
 ---
-title: 工具'
+title: '工具'
 description: '管理 LLM 可以使用的工具。'
 category: 'OpenCode 开发手册'
 order: 17

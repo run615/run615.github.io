@@ -1,5 +1,5 @@
 ---
-title: MCP 服务器'
+title: 'MCP 服务器'
 description: '添加本地和远程 MCP 工具。'
 category: 'OpenCode 开发手册'
 order: 28

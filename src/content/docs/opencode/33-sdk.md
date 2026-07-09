@@ -1,5 +1,5 @@
 ---
-title: SDK'
+title: 'SDK'
 description: 'opencode 服务器的类型安全 JS 客户端。'
 category: 'OpenCode 开发手册'
 order: 33

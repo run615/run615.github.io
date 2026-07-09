@@ -1,5 +1,5 @@
 ---
-title: 简介'
+title: '简介'
 description: '开始使用 OpenCode。'
 category: 'OpenCode 开发手册'
 order: 1

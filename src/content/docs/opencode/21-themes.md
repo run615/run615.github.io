@@ -1,5 +1,5 @@
 ---
-title: 主题'
+title: '主题'
 description: '选择内置主题或定义您自己的主题。'
 category: 'OpenCode 开发手册'
 order: 21

@@ -1,5 +1,5 @@
 ---
-title: 网络'
+title: '网络'
 description: '配置代理和自定义证书。'
 category: 'OpenCode 开发手册'
 order: 4

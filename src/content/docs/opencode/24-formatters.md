@@ -1,5 +1,5 @@
 ---
-title: 格式化工具'
+title: '格式化工具'
 description: 'OpenCode 使用特定语言的格式化工具。'
 category: 'OpenCode 开发手册'
 order: 24

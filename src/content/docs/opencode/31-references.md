@@ -1,5 +1,5 @@
 ---
-title: References'
+title: 'References'
 description: 'Add local directories and Git repositories as project references.'
 category: 'OpenCode 开发手册'
 order: 31

@@ -1,5 +1,5 @@
 ---
-title: 代理技能'
+title: '代理技能'
 description: '通过 SKILL.md 定义可复用的行为'
 category: 'OpenCode 开发手册'
 order: 30

@@ -1,5 +1,5 @@
 ---
-title: 配置'
+title: '配置'
 description: '使用 OpenCode JSON 配置。'
 category: 'OpenCode 开发手册'
 order: 2

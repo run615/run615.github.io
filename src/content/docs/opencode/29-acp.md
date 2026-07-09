@@ -1,5 +1,5 @@
 ---
-title: ACP 支持'
+title: 'ACP 支持'
 description: '在任何兼容 ACP 的编辑器中使用 OpenCode。'
 category: 'OpenCode 开发手册'
 order: 29

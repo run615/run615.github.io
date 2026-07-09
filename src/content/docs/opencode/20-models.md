@@ -1,5 +1,5 @@
 ---
-title: 模型'
+title: '模型'
 description: '配置 LLM 提供商和模型。'
 category: 'OpenCode 开发手册'
 order: 20

@@ -1,5 +1,5 @@
 ---
-title: 生态系统'
+title: '生态系统'
 description: '基于 OpenCode 构建的项目与集成。'
 category: 'OpenCode 开发手册'
 order: 36

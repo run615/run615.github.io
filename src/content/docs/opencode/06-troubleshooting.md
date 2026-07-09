@@ -1,5 +1,5 @@
 ---
-title: 故障排除'
+title: '故障排除'
 description: '常见问题及其解决方法。'
 category: 'OpenCode 开发手册'
 order: 6

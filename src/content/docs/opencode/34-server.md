@@ -1,5 +1,5 @@
 ---
-title: 服务器'
+title: '服务器'
 description: '通过 HTTP 与 opencode 服务器交互。'
 category: 'OpenCode 开发手册'
 order: 34
