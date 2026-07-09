@@ -12,7 +12,7 @@ const grouped = Object.fromEntries(
   ])
 );
 
-const categoryOrder = ['入门', '基础', '使用', '配置', '开发'];
+const categoryOrder = ['OpenCode 开发手册', '好文收藏'];
 const sortedCategories = categories.sort(
   (a, b) => (categoryOrder.indexOf(a) !== -1 ? categoryOrder.indexOf(a) : 99) -
     (categoryOrder.indexOf(b) !== -1 ? categoryOrder.indexOf(b) : 99)
@@ -23,7 +23,7 @@ const sortedCategories = categories.sort(
   <section class="page">
     <div class="container">
       <h1 class="page-title">文档</h1>
-      <p class="page-subtitle">OpenCode 官方文档中文参考</p>
+      <p class="page-subtitle">文档收藏</p>
 
       <div class="docs-grid">
         {sortedCategories.map(cat => (
