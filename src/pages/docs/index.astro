@@ -7,8 +7,15 @@ const categories = [...new Set(docs.map(d => d.data.category || '其他'))];
 const grouped = Object.fromEntries(
   categories.map(cat => [
     cat,
-    docs.filter(d => (d.data.category || '其他') === cat).sort((a, b) => (a.data.order || 0) - (b.data.order || 0)),
+    docs.filter(d => (d.data.category || '其他') === cat)
+      .sort((a, b) => (a.data.order || 0) - (b.data.order || 0)),
   ])
+);
+
+const categoryOrder = ['入门', '基础', '使用', '配置', '开发'];
+const sortedCategories = categories.sort(
+  (a, b) => (categoryOrder.indexOf(a) !== -1 ? categoryOrder.indexOf(a) : 99) -
+    (categoryOrder.indexOf(b) !== -1 ? categoryOrder.indexOf(b) : 99)
 );
 ---
 
@@ -18,48 +25,71 @@ const grouped = Object.fromEntries(
       <h1 class="page-title">文档</h1>
       <p class="page-subtitle">OpenCode 官方文档中文参考</p>
 
-      {Object.entries(grouped).map(([cat, items]) => (
-        <div class="doc-section">
-          <h2 class="section-title">{cat}</h2>
-          <div class="doc-list">
-            {items.map(doc => (
-              <a href={`/docs/${doc.id}`} class="card doc-card">
-                <h3 class="doc-title">{doc.data.title}</h3>
-                <p class="doc-desc">{doc.data.description}</p>
-              </a>
-            ))}
+      <div class="docs-grid">
+        {sortedCategories.map(cat => (
+          <div class="doc-section">
+            <h2 class="section-title">{cat}</h2>
+            <div class="doc-list">
+              {grouped[cat].map(doc => (
+                <a href={`/docs/${doc.id}`} class="doc-card">
+                  <h3 class="doc-card-title">{doc.data.title}</h3>
+                  <p class="doc-card-desc">{doc.data.description}</p>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .docs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
   .doc-section {
-    margin-bottom: 40px;
+    max-width: 720px;
+  }
+
+  .doc-section .section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
   }
 
   .doc-list {
-    display: grid;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .doc-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 18px;
+    border-radius: 10px;
+    transition: all 0.15s;
     color: var(--text) !important;
-    padding: 16px 20px;
   }
 
-  .doc-title {
+  .doc-card:hover {
+    background: var(--bg-secondary);
+  }
+
+  .doc-card-title {
     font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
+    font-weight: 500;
+    margin-bottom: 2px;
   }
 
-  .doc-desc {
+  .doc-card-desc {
     font-size: 13px;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.4;
   }
 </style>
