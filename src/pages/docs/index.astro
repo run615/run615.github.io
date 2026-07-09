@@ -27,8 +27,8 @@ const sortedCategories = categories.sort(
 
       <div class="docs-grid">
         {sortedCategories.map(cat => (
-          <div class="doc-section">
-            <h2 class="section-title">{cat}</h2>
+          <details class="doc-section" open>
+            <summary class="section-title">{cat}</summary>
             <div class="doc-list">
               {grouped[cat].map(doc => (
                 <a href={`/docs/${doc.id}`} class="doc-card">
@@ -37,7 +37,7 @@ const sortedCategories = categories.sort(
                 </a>
               ))}
             </div>
-          </div>
+          </details>
         ))}
       </div>
     </div>
@@ -48,7 +48,10 @@ const sortedCategories = categories.sort(
   .docs-grid {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+  }
+
+  .doc-section + .doc-section {
+    margin-top: 32px;
   }
 
   .doc-section {
@@ -57,9 +60,37 @@ const sortedCategories = categories.sort(
 
   .doc-section .section-title {
     font-size: 20px;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
+    padding: 4px 0;
     border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .doc-section[open] > .section-title {
+    margin-bottom: 20px;
+  }
+
+  .doc-section .section-title::-webkit-details-marker {
+    display: none;
+  }
+
+  .doc-section .section-title::before {
+    content: '▶';
+    font-size: 10px;
+    transition: transform 0.2s;
+    color: var(--text-tertiary);
+  }
+
+  .doc-section[open] > .section-title::before {
+    transform: rotate(90deg);
+  }
+
+  .doc-section .section-title:hover {
+    color: var(--text);
   }
 
   .doc-list {
